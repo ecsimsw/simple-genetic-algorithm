@@ -84,17 +84,19 @@
 
    - 트랙을 여러 구간으로 나누어 점수(코드 : record)를 매기고, 완주가 확인되면 이 점수 값에 "임의의 상수 - 걸린 시간"을 더하는 것으로 적합도를 측정하였다. 이것으로 완주 전에는 거리에 비례하면서, 완주 후에는 완주를 못 끝낸 상황에 비해 더 좋은 적합도를 갖으면서도 시간에 반비례한 스코어를 얻을 수 있다.
 
+``` c#
 void CalculateFitness() { 
    for (int i = 0; i < geneCount; i++) { 
        fitness[i] = cars[i].record; } 
 }
+```
 
 ### 3) Selection 
 
    - 룰렛 휠 방식을 사용해서 적합도별로 가중치를 두어 더 적합한 염색체가 그만큼 더 많이 교배될 수 있도록 하였다.
 
    - 적합도를 모두 더하고 각 적합도로 이를 나누는 것으로 각 염색체가 얻을 가중치를 백분위로 구하였다.
-
+``` c#
 void Selection(){ 
    for(int i=0; i<geneCount; i++){ 
       int rand_roulette = Random.Range(0, 100); 
@@ -120,7 +122,7 @@ int RouletteWheelTable(int rand){
         } 
    return -1; 
  }
- 
+```
 ### 4) Crossover
 
    - 선택된 염색체들을 2개씩 짝지어 교배하여 새로운 염색체 하나를 만든다. 즉 선택된 염색체에서 2개를 뽑아 유전자를 섞어 자식 염색체를 만드는 것을 부모 염색체 개수 만큼 반복한다.
@@ -128,7 +130,7 @@ int RouletteWheelTable(int rand){
    - 유전자는 x, y, Sides, Sides&Forward, Forward 다섯 영역으로 나눠져 있다. 하나의 염색체는 x, Sides, Forward's 2bit, 나머지 다른 하나의 염색체는 y, Sides&Forward, Forward's left 2 bit를 결정하도록 하였다.
 
    - 선택된 염색체들 중 임의의 두 개체는 교배없이 그 자체로 자식이 된다. 이후 선택된 염색체들 중 임의로 짝지어진 두개의 염색체를 교배한 값으로 하여 자식이된다.
-
+``` c#
 void CrossOver() 
 { 
      int rand_selectedIndex1; 
@@ -151,11 +153,11 @@ void CrossOver()
          childCarsValue[i] = cv; 
      } 
  }
- 
+```
 ### 5) Mutate
 
    - 지정된 확률에 따라, 자식 유전자를 아예 랜덤한 유전자를 갖게 하였다.
-
+``` c#
  void Mutate(float mutatePR) 
  { 
      for(int i=0; i<geneCount; i++) 
@@ -167,7 +169,7 @@ void CrossOver()
          } 
      } 
 }
- 
+ ```
 ### Note / Result
 
    - 학습은 잘된다. 처음에는 센서에 벽면이 검출되면, 랜덤하게 회전하여 나아가지도 못했던 자동차들이 완주에 성공하고, 그 이후로는 더 빠르게 완주할 수 있는 자동차가 우수한 염색체로 선택되어 점점 빠른 주행이 가능하도록 발전한다. 돌연변이가 없는 한 모든 자동차가 결국 하나의 염색체로 통일된다. 
