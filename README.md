@@ -195,7 +195,7 @@ Obstacle 추가
 
 ecsimsw / 2019.11
 
-https://ecsimsw.tistory.com/entry/Machine-Learning-Generic-Algorithm?category=869268
-https://ecsimsw.tistory.com/entry/Implementation-GA-AI-Car?category=813255
+유전학습 개념 정리 : https://ecsimsw.tistory.com/entry/Machine-Learning-Generic-Algorithm?category=869268   
+블로그 프로젝트 정리 : https://ecsimsw.tistory.com/entry/Implementation-GA-AI-Car?category=813255
 
 
