@@ -190,3 +190,12 @@ Obstacle 추가
   ![5](screenShots/5.png)
 
 빨간색이 1순위, 파란색이 2순위, 노란색이 돌연변이 염색체이다.
+
+### 만든이
+
+ecsimsw / 2019.11
+
+https://ecsimsw.tistory.com/entry/Machine-Learning-Generic-Algorithm?category=869268
+https://ecsimsw.tistory.com/entry/Implementation-GA-AI-Car?category=813255
+
+
